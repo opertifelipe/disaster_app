@@ -72,10 +72,10 @@ def build_model():
     return cv
 
 def evaluate_model(model, X_test, Y_test, category_names):
-    y_pred = cv.predict(X_test)
+    y_pred = model.predict(X_test)
     for i in range(len(category_names)):
         print(category_names[i])
-        print(classification_report(y_test[category_names[i]].values, y_pred[:, i]))
+        print(classification_report(Y_test[category_names[i]].values, y_pred[:, i]))
 
 
 def save_model(model, model_filepath):
