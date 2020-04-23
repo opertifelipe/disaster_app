@@ -8,6 +8,9 @@ import pickle
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import nltk
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
@@ -88,18 +91,18 @@ def main():
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
         X, Y, category_names = load_data(database_filepath)
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
-        print(Y_train)
+
         print('Building model...')
         model = build_model()
-        
+        print(model)
         print('Training model...')
-        model.fit(X_train, Y_train)
+        #model.fit(X_train, Y_train)
         
         print('Evaluating model...')
-        evaluate_model(model, X_test, Y_test, category_names)
+        #evaluate_model(model, X_test, Y_test, category_names)
 
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
-        save_model(model, model_filepath)
+        #save_model(model, model_filepath)
 
         print('Trained model saved!')
 
