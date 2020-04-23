@@ -23,12 +23,12 @@ def clean_data(df):
         categories[column] = categories[column].astype(int)
 
         categories[column] = categories[column].apply(lambda x: 1 if x >= 1 else 0)
-        df = df.drop("categories", axis=1)
-        df = pd.concat([df, categories], axis=1)
+    df = df.drop("categories", axis=1)
+    df = pd.concat([df, categories], axis=1)
 
-        df = df.drop_duplicates()
+    df = df.drop_duplicates()
 
-        return df
+    return df
 
 def save_data(df, database_filename):
     engine = create_engine('sqlite:///'+database_filename)
@@ -45,7 +45,6 @@ def main():
 
         print('Cleaning data...')
         df = clean_data(df)
-        
         print('Saving data...\n    DATABASE: {}'.format(database_filepath))
         save_data(df, database_filepath)
         
