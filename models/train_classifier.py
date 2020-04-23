@@ -90,19 +90,19 @@ def main():
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
         X, Y, category_names = load_data(database_filepath)
-        X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
+        X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.95)
 
         print('Building model...')
         model = build_model()
         print(model)
         print('Training model...')
-        #model.fit(X_train, Y_train)
+        model.fit(X_train, Y_train)
         
         print('Evaluating model...')
-        #evaluate_model(model, X_test, Y_test, category_names)
+        evaluate_model(model, X_test, Y_test, category_names)
 
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
-        #save_model(model, model_filepath)
+        save_model(model, model_filepath)
 
         print('Trained model saved!')
 
